@@ -1,0 +1,11 @@
+{
+  "name": "1-gulp",
+  "version": "1.0.0",
+  "description": "A basic app using gulpjs",
+  "main": "index.js",
+  "author": "Arvind",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}
