@@ -14,7 +14,9 @@ gulp.task('styles', function() {
 
     return gulp.src(['public/css/reset.css', CSS_PATH])
     	//gulp.src(CSS_PATH) //this add the reset at the end in concatinated file, making the reset to override.
-        .pipe(autoprefixer())
+        .pipe(autoprefixer({
+        	browsers: ['last 2 versions', 'ie 8']
+        }))
         .pipe(concat('styles.css'))
         .pipe(minifyCss())
         .pipe(gulp.dest('public/dist'))
