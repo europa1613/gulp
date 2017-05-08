@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
+var minifyCss = require('gulp-minify-css');
 
 
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
@@ -14,6 +15,7 @@ gulp.task('styles', function() {
     return gulp.src(['public/css/reset.css', CSS_PATH])
     	//gulp.src(CSS_PATH) //this add the reset at the end in concatinated file, making the reset to override.
         .pipe(concat('styles.css'))
+        .pipe(minifyCss())
         .pipe(gulp.dest('public/dist'))
         .pipe(livereload());
 });
@@ -44,4 +46,5 @@ gulp.task('watch', function() {
     require('./server.js');
     livereload.listen();
     gulp.watch(SCRIPTS_PATH, ['scripts']);
+    gulp.watch(CSS_PATH, ['styles']);
 });
