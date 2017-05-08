@@ -11,7 +11,8 @@ var CSS_PATH = 'public/css/**/*.css';
 gulp.task('styles', function() {
     console.log('Starting styles task');
 
-    return gulp.src(CSS_PATH)
+    return gulp.src(['public/css/reset.css', CSS_PATH])
+    	//gulp.src(CSS_PATH) //this add the reset at the end in concatinated file, making the reset to override.
         .pipe(concat('styles.css'))
         .pipe(gulp.dest('public/dist'))
         .pipe(livereload());
