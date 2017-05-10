@@ -1,7 +1,7 @@
 ## Running
-`yarn install`
+- `yarn install`
 
-`gulp <task>`
+- `gulp <task>`
 
 ### Available gulp task
 - styles
