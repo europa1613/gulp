@@ -571,6 +571,13 @@ gulp-minify-css@^1.2.4:
     vinyl-bufferstream "^1.0.1"
     vinyl-sourcemaps-apply "^0.2.0"
 
+gulp-plumber@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-plumber/-/gulp-plumber-1.0.1.tgz#56d8e74a0a05a8b75d2ecc11800d0191df542af2"
+  dependencies:
+    gulp-util "~3"
+    through2 "~0.6"
+
 gulp-uglify@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/gulp-uglify/-/gulp-uglify-2.1.2.tgz#6db85b1d0ee63d18058592b658649d65c2ec4541"
@@ -584,7 +591,7 @@ gulp-uglify@^2.1.2:
     uglify-save-license "^0.4.1"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@^3.0.0, gulp-util@^3.0.2, gulp-util@^3.0.5:
+gulp-util@^3.0.0, gulp-util@^3.0.2, gulp-util@^3.0.5, gulp-util@~3:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -1406,7 +1413,7 @@ supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
-through2@^0.6.1:
+through2@^0.6.1, through2@~0.6:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
   dependencies:
