@@ -1,7 +1,14 @@
 ## Running
 - `yarn install`
 
-- `gulp <task>`
+- `gulp scripts`
+
+- `gulp styles`
+
+- `gulp watch`
+
+### Application
+`localhost:3000`
 
 ### Available gulp task
 - styles
@@ -9,7 +16,3 @@
 - images
 - default
 - watch (will also run the livereload)
-
-
-### Application
-`localhost:3000`
