@@ -8,6 +8,13 @@ var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 
+//Less plugins
+var less = require('gulp-less');
+var LessAutoprefix = require('less-plugin-autoprefix');
+var lessAutoprefix = new LessAutoprefix({
+    browsers: ['last 2 versions']
+});
+
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
 var SCSS_PATH = 'public/scss/**/*.scss';
@@ -34,8 +41,8 @@ var SCSS_PATH = 'public/scss/**/*.scss';
         .pipe(livereload());
 });*/
 
-//Styles
-gulp.task('styles', function() {
+//SCSS task
+/*gulp.task('styles', function() {
     console.log('Starting sass task');
 
     return gulp.src('public/scss/styles.scss') //only include main, since other files are imported.
@@ -53,6 +60,26 @@ gulp.task('styles', function() {
         .pipe(sass({
             outputStyle: 'compressed'
         }))
+        .pipe(sourcemaps.write()) //before the file is written to dest->dist folder 
+        .pipe(gulp.dest('public/dist'))
+        .pipe(livereload());
+});*/
+
+//Less Task
+gulp.task('styles', function() {
+    console.log('Starting less task');
+
+    return gulp.src('public/less/styles.less') //only include main, since other files are imported.
+        .pipe(plumber(function(err) {
+            console.log('Less task Error!');
+            console.log(err);
+            this.emit('end');
+        }))
+        .pipe(sourcemaps.init()) // before any modification happens
+        .pipe(less({
+            plugins: [lessAutoprefix]
+        }))
+        .pipe(minifyCss())
         .pipe(sourcemaps.write()) //before the file is written to dest->dist folder 
         .pipe(gulp.dest('public/dist'))
         .pipe(livereload());
@@ -85,5 +112,6 @@ gulp.task('watch', function() {
     livereload.listen();
     gulp.watch(SCRIPTS_PATH, ['scripts']);
     //gulp.watch(CSS_PATH, ['styles']);
-    gulp.watch(SCSS_PATH, ['styles']);
+    //gulp.watch(SCSS_PATH, ['styles']);
+    gulp.watch('public/less/styles.less', ['styles']);
 });
