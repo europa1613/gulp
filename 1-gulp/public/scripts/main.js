@@ -1,3 +1,22 @@
-var name = 'Arya, Stark';
+//var name = 'Arya, Stark';
 
-document.write('You know nothing ' + name + '!');
+
+class Person {
+	constructor(name) {
+		this.name = name;
+	}
+
+	greet() {
+		if(this.name) {
+			return `Hello, I am ${this.name} !`;
+		} else {
+			return 'Hello!'
+		}
+	}
+}
+
+
+var person = new Person('Arya');
+
+
+document.write(person.greet());
