@@ -142,12 +142,12 @@ gulp.task('templates', function() {
 
 
 //Default
-gulp.task('default', function() {
+gulp.task('default', ['images', 'templates', 'styles', 'scripts'], function() {
     console.log('Starting default task');
 });
 
 
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     console.log('Starting watch task');
     require('./server.js');
     livereload.listen();
