@@ -6,6 +6,9 @@
   "author": "Arvind",
   "license": "MIT",
   "dependencies": {
+    "gulp-imagemin": "3.0.1",
+    "imagemin-jpeg-recompress": "5.0.0",
+    "imagemin-pngquant": "5.0.0",
     "static-server": "2.0.0"
   },
   "devDependencies": {

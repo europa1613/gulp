@@ -24,11 +24,17 @@ var declare = require('gulp-declare');
 var wrap = require('gulp-wrap');
 
 
+//Image compression
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
+var jpegRecompress = require('imagemin-jpeg-recompress');
+
+
 var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
 var SCSS_PATH = 'public/scss/**/*.scss';
 var TEMPLATES_PATH = 'templates/**/*.hbs';
-
+var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,svg,gif}';//no spaces
 //Styles
 /*gulp.task('styles', function() {
     console.log('Starting styles task');
@@ -119,6 +125,17 @@ gulp.task('scripts', function() {
 //Images
 gulp.task('images', function() {
     console.log('Starting images task');
+    return gulp.src(IMAGES_PATH)
+        .pipe(imagemin(
+            [
+                imagemin.gifsicle(),
+                imagemin.jpegtran(),
+                imagemin.optipng(),
+                imagemin.svgo(),
+                pngquant(),
+                jpegRecompress()
+            ]))
+        .pipe(gulp.dest('public/dist/images'));
 });
 
 
