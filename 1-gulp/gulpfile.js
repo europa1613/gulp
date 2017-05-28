@@ -9,6 +9,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var del = require('del');
+var zip = require('gulp-zip');
 
 //Less plugins
 var less = require('gulp-less');
@@ -35,7 +36,7 @@ var SCRIPTS_PATH = 'public/scripts/**/*.js';
 var CSS_PATH = 'public/css/**/*.css';
 var SCSS_PATH = 'public/scss/**/*.scss';
 var TEMPLATES_PATH = 'templates/**/*.hbs';
-var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,svg,gif}';//no spaces
+var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,svg,gif}'; //no spaces
 //Styles
 /*gulp.task('styles', function() {
     console.log('Starting styles task');
@@ -162,8 +163,8 @@ gulp.task('templates', function() {
 //clean
 gulp.task('clean', function() {
     return del.sync([
-            'public/dist'
-        ])
+        'public/dist'
+    ])
 });
 
 
@@ -172,6 +173,13 @@ gulp.task('default', ['clean', 'images', 'templates', 'styles', 'scripts'], func
     console.log('Starting default task');
 });
 
+
+//zip 
+gulp.task('export', function() {
+    return gulp.src('public/**/*')
+        .pipe(zip('public.zip'))
+        .pipe(gulp.dest('./'));
+})
 
 gulp.task('watch', ['default'], function() {
     console.log('Starting watch task');
